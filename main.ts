@@ -187,7 +187,7 @@ function hasNextLevel () {
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     projectilex = sprites.create(assets.image`meinBild12`, SpriteKind.Projectile)
     projectilex.setPosition(mySprite.x, mySprite.y)
-    spriteutils.moveTo(projectilex, spriteutils.point(enemyx.x, enemyx.y), 250)
+    spriteutils.moveTo(projectilex, spriteutils.point(enemyx.x, enemyx.y), 1000)
 })
 function setzexylevel (num: number) {
     if (current_level == 0) {
@@ -219,11 +219,10 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, oth
     sprites.destroy(projectilex)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
-    status = statusbars.create(20, 4, StatusBarKind.Health)
-    status.value += -20
+    info.changeLifeBy(-1)
+    sprites.destroy(enemyx)
 })
 let coin2: Sprite = null
-let status: StatusBarSprite = null
 let projectilex: Sprite = null
 let startxlocation2: tiles.Location = null
 let statusbar: StatusBarSprite = null
@@ -262,7 +261,4 @@ forever(function () {
         tiles.placeOnTile(coin2, Wert)
         tiles.setTileAt(Wert, assets.tile`transparency16`)
     }
-})
-forever(function () {
-	
 })
