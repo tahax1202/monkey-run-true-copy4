@@ -1,0 +1,58 @@
+{
+    "name": "monkey run true - Copy4 Copy",
+    "description": "",
+    "dependencies": {
+        "device": "*",
+        "animation": "*",
+        "pxt-status-bar": "github:jwunderl/pxt-status-bar#v0.4.2",
+        "multiplayer": "*",
+        "arcade-tilemap-a-star": "github:jwunderl/arcade-tilemap-a-star#v0.4.0",
+        "arcade-sprite-util": "github:jwunderl/arcade-sprite-util#v0.6.0",
+        "sprite-scaling": "*",
+        "tilemaps": "github:microsoft/pxt-tilemaps#v1.12.0"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "assets.json",
+        "tilemap.g.jres",
+        "tilemap.g.ts",
+        "images.g.jres",
+        "images.g.ts",
+        "main.py"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "branch": "stable4.0",
+        "tag": "v4.0.5",
+        "commits": "https://github.com/microsoft/pxt-arcade/commits/8b2b5c4d581645893dee49bb828fac33726d4556",
+        "target": "4.0.14",
+        "pxt": "12.2.26",
+        "targetId": "arcade"
+    },
+    "supportedTargets": [
+        "arcade"
+    ],
+    "preferredEditor": "blocksprj",
+    "palette": [
+        "#000000",
+        "#FFFFFF",
+        "#FF2121",
+        "#808080",
+        "#FF8135",
+        "#F5BF03",
+        "#808080",
+        "#78DC52",
+        "#2E335B",
+        "#87F2FF",
+        "#E2AD89",
+        "#A4839F",
+        "#5C406c",
+        "#E5CDC4",
+        "#91463d",
+        "#000000"
+    ]
+}
