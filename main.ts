@@ -14,6 +14,9 @@ namespace SpriteKind {
     export const Flier = SpriteKind.create()
 }
 /**
+ * Detected animations:
+ */
+/**
  * Walk: ActionKind.walk
  */
 /**
@@ -61,30 +64,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile22`, function (sprite, 
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile24`, function (sprite, location) {
     info.changeLifeBy(-3)
 })
-function level_dreigegener3 () {
-    if (true) {
-        info.changeLifeBy(-1)
-    }
-    for (let value2 of tiles.getTilesByType(assets.tile`tile22`)) {
-        enemyx = sprites.create(assets.image`enemyx`, SpriteKind.Enemy)
-        tiles.placeOnTile(enemyx, value2)
-        tiles.setTileAt(value2, assets.tile`transparency16`)
-        enemyx.follow(mySprite, 50)
-        if (true) {
-            animation.runImageAnimation(
-            enemyx,
-            assets.animation`enemy`,
-            700,
-            true
-            )
-        }
-    }
-}
-/**
- * Detected animations:
- */
 function level_zweigegner () {
-    statusbar = statusbars.create(20, 4, StatusBarKind.Health)
     if (true) {
         info.changeLifeBy(-1)
     }
@@ -104,25 +84,16 @@ function level_zweigegner () {
     }
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`tile19`, function (sprite, location) {
-    info.changeLifeBy(-3)
+    info.changeLifeBy(-5)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile6, function (sprite, location) {
     info.changeLifeBy(-3)
-})
-statusbars.onZero(StatusBarKind.EnemyHealth, function (status) {
-    sprites.destroy(enemyx, effects.spray, 500)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
-    status.value = 100
 })
 function aufrufxlevel (num: number) {
     startxlocation2 = tiles.getTilesByType(assets.tile`myTile17`)[0]
     tiles.placeOnTile(mySprite, startxlocation2)
     tiles.setTileAt(startxlocation2, assets.tile`transparency16`)
 }
-statusbars.onZero(StatusBarKind.Health, function (status) {
-    info.changeLifeBy(-1)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Projectile)
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile21`, function (sprite, location) {
     info.changeLifeBy(-3)
 })
@@ -164,7 +135,6 @@ function NextLevel () {
     return current_level != levelCount
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`banana`, function (sprite, location) {
-    info.changeLifeBy(1)
     current_level += 1
     if (NextLevel()) {
         game.splash("Next level unlocked!")
@@ -215,19 +185,16 @@ function setzexylevel (num: number) {
     aufrufxlevel(current_level)
 }
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
-    statusenemyx.value += -20
-    sprites.destroy(projectilex)
+    sprites.destroy(otherSprite, effects.fire, 200)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeLifeBy(-1)
-    sprites.destroy(enemyx)
+    sprites.destroy(otherSprite, effects.fire, 200)
 })
 let coin2: Sprite = null
 let projectilex: Sprite = null
 let startxlocation2: tiles.Location = null
-let statusbar: StatusBarSprite = null
 let enemyx: Sprite = null
-let statusenemyx: StatusBarSprite = null
 let max_of_jump = 0
 let jump = 0
 let levelCount = 0
@@ -247,14 +214,7 @@ jump = 0
 max_of_jump = 2
 enemy(1)
 info.setLife(5)
-statusenemyx = statusbars.create(20, 4, StatusBarKind.EnemyHealth)
-statusenemyx.value = 100
-statusenemyx.attachToSprite(enemyx)
-enemyx.setPosition(134, 88)
 enemyx.follow(mySprite, 50)
-forever(function () {
-	
-})
 forever(function () {
     for (let Wert of tiles.getTilesByType(assets.tile`myTile7`)) {
         coin2 = sprites.create(assets.image`Dollar0`, SpriteKind.coin)
